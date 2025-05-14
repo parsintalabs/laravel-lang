@@ -12,6 +12,7 @@ class SetLocaleController extends Controller
     public function __invoke(Request $request)
     {
         session(['locale' => $request->lang]);
+
         return back();
     }
 }
