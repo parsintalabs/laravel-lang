@@ -19,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $default = request()->getPreferredLanguage(['en', 'id', 'zh_CN']);
+        $lang = session('locale', $default);
+        app()->setLocale($lang);
+        \Carbon\Carbon::setLocale($lang);
     }
 }

@@ -41,6 +41,8 @@ class HandleInertiaRequests extends Middleware
 
         return [
             ...parent::share($request),
+            'language' => fn () => translations(base_path('lang/'.app()->getLocale().'.json')),
+            'locale_global' => str_replace('_', '-', session('locale', config('app.fallback_locale'))),
             'name' => config('app.name'),
             'quote' => ['message' => trim($message), 'author' => trim($author)],
             'auth' => [
